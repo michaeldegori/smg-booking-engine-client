@@ -44,9 +44,9 @@ const App = (props) => {
   return (
     <div className="App">
       <header>
-        <nav className="navbar navbar-expand-md navbar-default navbar-light navbar-inverse navbar-fixed-top bg-white p-0">
+        <nav className="navbar navbar-expand-md navbar-fixed-top navbar-light bg-white p-0">
           <div className="container-xl px-0 d-flex justify-content-center">
-            <div className="navbar-header  w-100 d-flex justify-content-between">
+            <div className="navbar-header w-100 d-flex justify-content-between">
               <div className="col p-0">
                 <NavLink
                   to="/home"
@@ -64,7 +64,7 @@ const App = (props) => {
                   />
                 </NavLink>
               </div>
-              <div className="col p-0 d-flex justify-content-end">
+              <div className="p-0 d-flex justify-content-end">
                 <Button
                   className="d-md-none burger rounded-pill bg-transparent border-0 px-3 py-2 "
                   onClick={() => setOpen(!open)}
@@ -83,11 +83,10 @@ const App = (props) => {
                 </Button>
               </div>
             </div>
-
             <div
               className={`${open && 'burger-open show'} ${
                 !open && 'collapse'
-              } navbar-collapse px-0 navbar-expand-lg`}
+              } navbar-collapse px-0`}
               id="navbarNav"
             >
               <div
@@ -96,7 +95,7 @@ const App = (props) => {
                 }`}
               >
                 <ul
-                  className=" navbar-nav text-center d-flex justify-content-between align-items-center"
+                  className=" navbar-nav text-center d-flex justify-content-between align-items-center pr-3"
                   style={{ width: '500px' }}
                 >
                   <li className="nav-item my-3">

@@ -28,6 +28,7 @@ const Home = (props) => {
     <section className="home">
       <div
         className="container-xl rounded"
+        id="top"
         style={{
           backgroundImage: `url(${background})`,
           top: 0,
@@ -66,10 +67,6 @@ const Home = (props) => {
                   <div className="form-group">
                     <label className="mb-1">When will you be joining us?</label>
                     <DateRangePicker
-                      hideKeyboardShortcutsPanel
-                      block
-                      withPortal
-                      anchorDirection="right"
                       startDatePlaceholderText="Start"
                       startDate={startDate}
                       onDatesChange={handleDateChange}
@@ -77,12 +74,17 @@ const Home = (props) => {
                       endDate={endDate}
                       numberOfMonths={1}
                       displayFormat="MMM DD"
-                      showClearDates
+                      showClearDates={true}
                       focusedInput={focus}
                       onFocusChange={(focus) => setFocus(focus)}
                       startDateId="start-date"
                       endDateId="end-date"
                       minimumNights={3}
+                      hideKeyboardShortcutsPanel={true}
+                      anchorDirection="right"
+                      autoFocus
+                      withPortal
+                      block
                     />
                     {/* <DateRangePicker
                       withPortal
@@ -312,7 +314,7 @@ const Home = (props) => {
               <p className="mt-0 ml-0 mb-2">
                 Add dates for updated pricing and availability.
               </p>
-              <a href="#title">
+              <a href="#top">
                 <button className="btn btn-primary text-white">
                   Add dates
                 </button>
