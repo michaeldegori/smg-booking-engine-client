@@ -1,0 +1,54 @@
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Rock Salt', cursive; */
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+  height: 2rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.line1 {
+  width: 1.8rem;
+  height: 0.2rem;
+  margin: 0.3rem 0;
+  transition: all 0.2s ease-in-out;
+  background-color: #323c53;
+}
+
+.line2 {
+  width: 1.8rem;
+  height: 0.2rem;
+  margin: 0.3rem 0;
+  transition: all 0.2s ease-in-out;
+  background-color: #323c53;
+}
+
+.line3 {
+  width: 1.8rem;
+  height: 0.2rem;
+  margin: 0.3rem 0;
+  transition: all 0.2s ease-in-out;
+  background-color: #323c53;
+}
+
+.line1.burger-open {
+  transform: rotate(225deg) translate(-0.4rem, -0.4rem);
+  background-color: #f4bf38;
+}
+
+.line2.burger-open {
+  transform: translateX(-3rem);
+  opacity: 0;
+}
+
+.line3.burger-open {
+  transform: rotate(-225deg) translate(-0.3rem, 0.3rem);
+  background-color: #f4bf38;
+}
+
+footer img {
+  width: 1.5rem;
+}
