@@ -93,15 +93,10 @@ const App = (props) => {
                 }`}
               >
                 <ul
-                  className="show navbar-nav text-center d-flex justify-content-between align-items-center"
+                  className=" navbar-nav text-center d-flex justify-content-between align-items-center"
                   style={{ width: '500px' }}
                 >
-                  {user ? (
-                    <li className="nav-item mb-5 active">
-                      <h5>Hey there, {user?.firstName}!</h5>
-                    </li>
-                  ) : null}
-                  <li className="nav-item my-3 active">
+                  <li className="nav-item my-3">
                     <NavLink
                       onClick={() => setOpen(!open)}
                       to="/home"
