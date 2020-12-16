@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { userContext } from '../contexts/User';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/Properties.css';
 
 const Properties = (props) => {
+  const { user } = useContext(userContext);
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
@@ -67,11 +69,13 @@ const Properties = (props) => {
         <h3 className="text-dark">Our properties</h3>
         <div className="row mt-4">
           {listProperties()}{' '}
-          <Link to="/properties/add">
-            <button className="btn btn-primary text-white">
-              Add New Property
-            </button>
-          </Link>
+          {user && (
+            <Link to="/properties/add">
+              <button className="btn btn-primary text-white">
+                Add New Property
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </section>

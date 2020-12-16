@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { Link, useHistory } from 'react-router-dom';
-import '../styles/PropertyDetails.css';
 
 const Booking = (props) => {
-  const [booking, setBooking] = useState();
+  const history = useHistory();
+  const [property, setProperty] = useState();
+  const [user, setUser] = useState();
+
+  const [booking, setBooking] = useState({
+    checkinDate: '',
+    checkoutDate: '',
+  });
 
   useEffect(() => {
     api
@@ -14,52 +20,73 @@ const Booking = (props) => {
       });
   }, []);
 
+  // useEffect(() => {
+  //   api
+  //     .get(`http://localhost:3000/users/${props.match.params.id}`)
+  //     .then((res) => {
+  //       setUser(res.data);
+  //     });
+  // }, []);
+
+  const handleChange = (event) => {
+    setBooking({
+      ...booking,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const submitBooking = (event) => {
+    event.preventDefault();
+
+    return api
+      .post(`http://localhost:3000/properties/${property._id}/reserve`, {
+        property: props.match.params.id,
+        ...booking,
+      })
+      .then((res) => {
+        history.push('/confirm-details');
+        console.log('Property Uploaded Successfully');
+      })
+      .catch((err) => {
+        alert('Upload Error');
+      });
+  };
+
   return (
-    <section className="property-details">
-      <div className="container-fluid container py-3">
-        <h3 className="text-dark">{property?.listingTitle}</h3>
-        <div className="card px-2 mb-3">
-          <div className="row mt-4">
-            <div className="col-md-6 mb-3">
-              <img
-                src={property?.photos}
-                className="card-img-top rounded"
-                alt="..."
-              />
-            </div>
-            <div className="col-md-6">
-              <div className="row">
-                <div className="col">
-                  <p className="card-text text-dark">
-                    Guests: {property?.maxGuests}
-                  </p>
-                </div>
-                <div className="col">
-                  <p className="card-text text-dark">
-                    Beds: {property?.bedrooms}
-                  </p>
-                </div>
-                <div className="col">
-                  <p className="card-text text-dark">
-                    Baths: {property?.bathrooms}
-                  </p>
-                </div>
+    <section className="booking">
+      <div className="container-xl ">
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-8">
+            <h5 className="card-title py-2">Book your getaway</h5>
+            <form onSubmit={submitBooking}>
+              <div className="form-group">
+                <small>Check in Date</small>
+                <input
+                  className="form-control py-4"
+                  type="date"
+                  name="checkinDate"
+                  value={booking.checkinDate}
+                  onChange={handleChange}
+                />
+                <small>Check out Date</small>
+                <input
+                  className="form-control py-4"
+                  type="date"
+                  name="checkoutDate"
+                  value={booking.checkoutDate}
+                  onChange={handleChange}
+                />
               </div>
-              <h5 className="card-title text-danger mt-2">
-                {property?.listingTitle}
-              </h5>
-              <p className="card-text text-dark">{property?.description}</p>
-              <p className="card-text"></p>
-            </div>
+              <button className="form-control btn btn-primary text-white ">
+                Book now
+              </button>
+            </form>
+            <hr />
           </div>
         </div>
-
-        <Link to={`/properties/edit/${property?._id}`}>
-          <button className="btn btn-primary text-white">Edit Property</button>
-        </Link>
       </div>
     </section>
   );
 };
 
-export default PropertyDetails;
+export default Booking;

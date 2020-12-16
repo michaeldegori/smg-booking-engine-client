@@ -13,6 +13,9 @@ import PrivateRoute from './components/PrivateRoute';
 import Home from './components/Home';
 import Properties from './components/Properties';
 import PropertyDetails from './components/PropertyDetails';
+import Booking from './components/Booking';
+import ConfirmBookingDetails from './components/ConfirmBookingDetails';
+import BookingConfirmed from './components/BookingConfirmed';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import ForgotPassword from './components/ForgotPassword';
@@ -192,6 +195,16 @@ const App = (props) => {
           exact
           path="/properties/:id"
           render={(props) => <PropertyDetails {...props} />}
+        />
+        <PrivateRoute
+          exact
+          path="/properties/:id/reserve"
+          render={(props) => <Booking {...props} />}
+        />
+        <PrivateRoute
+          exact
+          path="/properties/:id/confirm-details"
+          render={(props) => <ConfirmBookingDetails {...props} />}
         />
         <Route
           exact
