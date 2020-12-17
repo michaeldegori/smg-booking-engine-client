@@ -15,6 +15,7 @@ import Properties from './components/Properties';
 import PropertyDetails from './components/PropertyDetails';
 import Booking from './components/Booking';
 import ConfirmBookingDetails from './components/ConfirmBookingDetails';
+import AddCalendar from './components/AddCalendar';
 import BookingConfirmed from './components/BookingConfirmed';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -224,6 +225,11 @@ const App = (props) => {
           exact
           path="/properties/edit/:id"
           render={(props) => <EditProperty {...props} />}
+        />
+        <PrivateRoute
+          exact
+          path="/add-calendar"
+          render={(props) => <AddCalendar {...props} />}
         />
       </Switch>
 
