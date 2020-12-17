@@ -14,19 +14,13 @@ const Booking = (props) => {
 
   useEffect(() => {
     api
-      .get(`http://localhost:3000/properties/${props.match.params.id}`)
+      .get(
+        `${process.env.REACT_APP_BACKEND}/properties/${props.match.params.id}`
+      )
       .then((res) => {
         setProperty(res.data);
       });
   }, []);
-
-  // useEffect(() => {
-  //   api
-  //     .get(`http://localhost:3000/users/${props.match.params.id}`)
-  //     .then((res) => {
-  //       setUser(res.data);
-  //     });
-  // }, []);
 
   const handleChange = (event) => {
     setBooking({
@@ -39,10 +33,13 @@ const Booking = (props) => {
     event.preventDefault();
 
     return api
-      .post(`http://localhost:3000/properties/${property._id}/reserve`, {
-        property: props.match.params.id,
-        ...booking,
-      })
+      .post(
+        `${process.env.REACT_APP_BACKEND}/properties/${property._id}/reserve`,
+        {
+          property: props.match.params.id,
+          ...booking,
+        }
+      )
       .then((res) => {
         history.push('/confirm-details');
         console.log('Property Uploaded Successfully');

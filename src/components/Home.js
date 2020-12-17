@@ -8,6 +8,8 @@ import cabinGlyph from '../images/cabin-glyph.png';
 import heartGlyph from '../images/heart-glyph.png';
 import serviceGlyph from '../images/service-glyph.png';
 import { DateRangePicker } from 'react-dates';
+import moment from 'moment';
+moment().format();
 
 const Home = (props) => {
   const [dateRange, setdateRange] = useState({
@@ -22,7 +24,25 @@ const Home = (props) => {
     setdateRange({ startDate: dates.startDate, endDate: dates.endDate });
   };
 
-  console.log(dateRange);
+  const today = new Date();
+  const todaysDate =
+    today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  const oneYearOut = new Date();
+  oneYearOut.setFullYear(oneYearOut.getFullYear() + 1);
+
+  const getDatesArr = (start) => {
+    let arr = [];
+    for (
+      let date = new Date(start);
+      date < oneYearOut;
+      date.setDate(date.getDate() + 1)
+    ) {
+      arr.push(new Date(date));
+    }
+    return arr;
+  };
+
+  const availableDates = getDatesArr(todaysDate);
 
   return (
     <section className="home">
@@ -85,13 +105,10 @@ const Home = (props) => {
                       autoFocus
                       withPortal
                       block
+                      isDayBlocked={(day) =>
+                        !availableDates.some((date) => day.isSame(date, 'day'))
+                      }
                     />
-                    {/* <DateRangePicker
-                      withPortal
-                      orientation="verticalScrollable"
-                      withFullScreenPortal={true}
-                      numberOfMonths={4}
-                    /> */}
                     <div className="form-group">
                       <label
                         for="exampleFormControlSelect1"

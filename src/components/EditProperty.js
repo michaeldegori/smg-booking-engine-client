@@ -24,7 +24,9 @@ const EditProperty = (props) => {
 
   useEffect(() => {
     api
-      .get(`http://localhost:3000/properties/${props.match.params.id}`)
+      .get(
+        `${process.env.REACT_APP_BACKEND}/properties/${props.match.params.id}`
+      )
       .then((res) => {
         setPropertyEdit(res.data);
       })
@@ -48,7 +50,7 @@ const EditProperty = (props) => {
 
     return api
       .put(
-        `http://localhost:3000/properties/${propertyEdit._id}/photos`,
+        `${process.env.REACT_APP_BACKEND}/properties/${propertyEdit._id}/photos`,
         formData
       )
       .then((res) => alert('Photos Uploaded Successfully'))
@@ -59,7 +61,10 @@ const EditProperty = (props) => {
 
   const submitEditProperty = (event) => {
     return api
-      .put(`http://localhost:3000/properties/${propertyEdit._id}`, propertyEdit)
+      .put(
+        `${process.env.REACT_APP_BACKEND}/properties/${propertyEdit._id}`,
+        propertyEdit
+      )
       .then((res) => {
         console.log('Property Updated');
       })

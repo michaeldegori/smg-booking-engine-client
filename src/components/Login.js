@@ -24,7 +24,7 @@ const Login = () => {
     event.preventDefault();
 
     api
-      .post('http://localhost:3000/users/login', userLogin)
+      .post(`${process.env.REACT_APP_BACKEND}/users/login`, userLogin)
       .then((response) => {
         console.log('User logged in!');
         setUser(response.data.user);

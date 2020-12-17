@@ -29,7 +29,7 @@ const Signup = () => {
     event.preventDefault();
 
     api
-      .post('http://localhost:3000/users/signup', userSignup)
+      .post(`${process.env.REACT_APP_BACKEND}/users/signup`, userSignup)
       .then((response) => {
         console.log('User logged in!');
         setUser(response.data.user);
