@@ -62,7 +62,12 @@ const Home = (props) => {
           zIndex: -1,
         }}
       >
-        <div className="row d-flex justify-content-center align-items-center ">
+        <div
+          className="row d-flex justify-content-center align-items-center"
+          style={{
+            minHeight: '35vh',
+          }}
+        >
           <div className="col-md-6">
             <h1
               className="text-white text-center mt-5"
