@@ -22,7 +22,7 @@ const EasyDateRange = (props) => {
         setBookings(res.data);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   const [focus, setFocus] = useState(null);
 
@@ -56,13 +56,16 @@ const EasyDateRange = (props) => {
     setOpen(!open);
   };
 
-  // const values = iCal.map(function (date) {
-  //   return date.getTime();
-  // });
+  const bookedDates = () => {
+    debugger;
+    return bookings?.map((booking) => ({
+      startDate: booking.checkinDate,
+      endDate: booking.checkoutDate,
+    }));
+  };
   // const unique = availableDates.filter(function (date) {
   //   return values.indexof(date.getTime()) == -1;
   // });
-
   return (
     <div>
       <h6 className="card-title text-primary mt-2">Check Availability</h6>
@@ -85,9 +88,22 @@ const EasyDateRange = (props) => {
         autoFocus
         openDirection="up"
         block
-        isDayBlocked={(day) =>
-          !availableDates.some((date) => day.isSame(date, 'day'))
-        }
+        isDayBlocked={(day) => {
+          let allBookedDates = bookedDates() || [];
+          let isBooked;
+          for (let i = 0; i < allBookedDates.length; i++) {
+            if (
+              day >= allBookedDates[i].startDate &&
+              day < allBookedDates[i].endDate
+            ) {
+              isBooked = true;
+              break;
+            }
+          }
+          return (
+            !availableDates.some((date) => day.isSame(date, 'day')) || isBooked
+          );
+        }}
       />
       <div className="m-3"></div>
     </div>

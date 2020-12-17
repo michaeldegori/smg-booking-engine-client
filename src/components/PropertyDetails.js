@@ -22,8 +22,8 @@ const PropertyDetails = (props) => {
       <div className="container-fluid container py-3">
         <h3 className="text-dark">{property?.listingTitle}</h3>
         <div className="card px-2 mb-3">
-          <div className="row mt-4">
-            <div className="col-md-6 mb-3">
+          <div className="row my-3">
+            <div className="col-md-6 d-md-flex align-items-center">
               <img
                 src={property?.photos}
                 className="card-img-top rounded img-fluid"
