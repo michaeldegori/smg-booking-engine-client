@@ -15,7 +15,10 @@ import Properties from './components/Properties';
 import PropertyDetails from './components/PropertyDetails';
 import Booking from './components/Booking';
 import ConfirmBookingDetails from './components/ConfirmBookingDetails';
-import AddCalendar from './components/AddCalendar';
+import WalkerAirbnbCal from './components/WalkerAirbnbCal';
+import WalkerVrboCal from './components/WalkerVrboCal';
+import EasyAirbnbCal from './components/EasyAirbnbCal';
+import EasyVrboCal from './components/EasyVrboCal';
 import BookingConfirmed from './components/BookingConfirmed';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -228,8 +231,23 @@ const App = (props) => {
         />
         <PrivateRoute
           exact
-          path="/add-calendar"
-          render={(props) => <AddCalendar {...props} />}
+          path="/walker-airbnb-cal"
+          render={(props) => <WalkerAirbnbCal {...props} />}
+        />
+        <PrivateRoute
+          exact
+          path="/walker-vrbo-cal"
+          render={(props) => <WalkerVrboCal {...props} />}
+        />
+        <PrivateRoute
+          exact
+          path="/easy-airbnb-cal"
+          render={(props) => <EasyAirbnbCal {...props} />}
+        />
+        <PrivateRoute
+          exact
+          path="/easy-vrbo-cal"
+          render={(props) => <EasyVrboCal {...props} />}
         />
       </Switch>
 

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import api from '../services/api';
 import { useHistory } from 'react-router-dom';
 import '../styles/EditProperty.css';
 import ICAL from 'ical.js';
-import api from '../services/api';
 
-const AddCalendar = (props) => {
+const EasyAirbnbCal = (props) => {
   const history = useHistory();
 
   const iCalImport = () => {
@@ -29,9 +28,28 @@ const AddCalendar = (props) => {
             checkoutDate: new Date(checkoutDetail[3]),
           };
         });
-        debugger;
-        // parse it with icalc and get all the dates out
-        // create the bookings by sending the dates to an endpoint with Axios
+
+        bookingDates.map((eachBooking) => {
+          api
+            .post(
+              `${process.env.REACT_APP_BACKEND}properties/5fd8cdc6ed2ea14c3a06f712/reserve`,
+              {
+                property: props.match.params.id,
+                ...eachBooking,
+                type: 'Airbnb',
+              }
+            )
+            .then((res) => {
+              history.push('/');
+              console.log('Calendar Uploaded Successfully');
+            })
+            .catch((err) => {
+              alert('Upload Error');
+            });
+
+          // parse it with icalc and get all the dates out
+          // create the bookings by sending the dates to an endpoint with Axios
+        });
       };
       reader.readAsText(file);
     };
@@ -50,7 +68,7 @@ const AddCalendar = (props) => {
       <div className="container-xl ">
         <div className="row d-flex justify-content-center">
           <div className="col-md-8">
-            <h5 className="card-title py-2">Add new calendar</h5>
+            <h5 className="card-title py-2">Add Easy Airbnb Calendar</h5>
             <form>
               <div className="form-group">
                 <div className="form-group">
@@ -71,4 +89,4 @@ const AddCalendar = (props) => {
   );
 };
 
-export default AddCalendar;
+export default EasyAirbnbCal;

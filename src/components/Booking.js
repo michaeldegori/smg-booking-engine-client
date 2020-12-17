@@ -38,6 +38,7 @@ const Booking = (props) => {
         {
           property: props.match.params.id,
           ...booking,
+          type: 'Direct',
         }
       )
       .then((res) => {
