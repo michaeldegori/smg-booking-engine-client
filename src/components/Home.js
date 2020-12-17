@@ -309,7 +309,7 @@ const Home = (props) => {
         <hr />
         <div className="container">
           <div className="row">
-            <div className="col-12 pl-0 mb-2">
+            <div className="col-12 pl-0 mb-3">
               <h2 className="h3  mt-0 mb-2">When are you traveling?</h2>
               <p className="mt-0 ml-0 mb-2">
                 Add dates for updated pricing and availability.

@@ -5,6 +5,10 @@ font-family: 'Rock Salt', cursive; */
   font-family: 'Montserrat', sans-serif;
 }
 
+.show {
+  z-index: 1100;
+}
+
 .logo {
   height: 2rem;
   transition: all 0.2s ease-in-out;
