@@ -48,7 +48,7 @@ const AddProperty = (props) => {
     });
 
     return api
-      .post('http://localhost:3000/properties', formData)
+      .post(`${process.env.REACT_APP_BACKEND}properties`, formData)
       .then((res) => {
         history.push('/properties');
         console.log('Property Uploaded Successfully');

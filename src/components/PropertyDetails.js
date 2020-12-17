@@ -9,7 +9,7 @@ const PropertyDetails = (props) => {
   useEffect(() => {
     api
       .get(
-        `${process.env.REACT_APP_BACKEND}/properties/${props.match.params.id}`
+        `${process.env.REACT_APP_BACKEND}properties/${props.match.params.id}`
       )
       .then((res) => {
         setProperty(res.data);

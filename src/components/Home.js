@@ -102,7 +102,7 @@ const Home = (props) => {
                       minimumNights={3}
                       hideKeyboardShortcutsPanel={true}
                       anchorDirection="right"
-                      autoFocus
+                      autoFocus={focus}
                       withPortal
                       block
                       isDayBlocked={(day) =>

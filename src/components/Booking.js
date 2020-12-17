@@ -15,7 +15,7 @@ const Booking = (props) => {
   useEffect(() => {
     api
       .get(
-        `${process.env.REACT_APP_BACKEND}/properties/${props.match.params.id}`
+        `${process.env.REACT_APP_BACKEND}properties/${props.match.params.id}`
       )
       .then((res) => {
         setProperty(res.data);
@@ -34,7 +34,7 @@ const Booking = (props) => {
 
     return api
       .post(
-        `${process.env.REACT_APP_BACKEND}/properties/${property._id}/reserve`,
+        `${process.env.REACT_APP_BACKEND}properties/${property._id}/reserve`,
         {
           property: props.match.params.id,
           ...booking,

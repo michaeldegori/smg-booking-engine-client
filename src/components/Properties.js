@@ -9,7 +9,7 @@ const Properties = (props) => {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BACKEND}/properties`)
+    Axios.get(`${process.env.REACT_APP_BACKEND}properties`)
       .then((res) => setProperties(res.data))
       .catch((err) => console.log(err));
   }, []);
