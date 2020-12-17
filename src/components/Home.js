@@ -69,9 +69,9 @@ const Home = (props) => {
             minHeight: '35vh',
           }}
         >
-          <div className="col-md-6">
+          <div className="col-md-7">
             <h1
-              className="text-white text-center mt-5"
+              className="text-white text-center mt-5 display-4"
               id="title"
               style={{
                 fontFamily: 'Rock Salt, cursive',
@@ -83,7 +83,7 @@ const Home = (props) => {
               Getaways
             </h1>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5">
             <div className="card my-4">
               <div className="card-body">
                 <h5 className="card-title">
