@@ -20,6 +20,7 @@ import WalkerVrboCal from './components/WalkerVrboCal';
 import EasyAirbnbCal from './components/EasyAirbnbCal';
 import EasyVrboCal from './components/EasyVrboCal';
 import BookingConfirmed from './components/BookingConfirmed';
+import EasyDateRange from './components/EasyDateRange';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import ForgotPassword from './components/ForgotPassword';
@@ -188,6 +189,11 @@ const App = (props) => {
           exact
           path="/properties"
           render={(props) => <Properties {...props} />}
+        />
+        <Route
+          exact
+          path="/easy"
+          render={(props) => <EasyDateRange {...props} />}
         />
         <PrivateRoute
           exact

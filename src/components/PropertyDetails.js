@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { Link } from 'react-router-dom';
 import '../styles/PropertyDetails.css';
+import EasyDateRange from './EasyDateRange';
 
 const PropertyDetails = (props) => {
   const [property, setProperty] = useState();
@@ -25,7 +26,7 @@ const PropertyDetails = (props) => {
             <div className="col-md-6 mb-3">
               <img
                 src={property?.photos}
-                className="card-img-top rounded"
+                className="card-img-top rounded img-fluid"
                 alt="..."
               />
             </div>
@@ -51,7 +52,7 @@ const PropertyDetails = (props) => {
                 {property?.listingTitle}
               </h5>
               <p className="card-text text-dark">{property?.description}</p>
-              <p className="card-text"></p>
+              <EasyDateRange />
             </div>
           </div>
         </div>
