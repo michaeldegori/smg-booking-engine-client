@@ -67,7 +67,8 @@ const EasyDateRange = (props) => {
   // });
   return (
     <div>
-      <h6 className="card-title text-primary mt-2">Check Availability</h6>
+      <h6 className="card-title text-danger mt-2">Check Availability</h6>
+      <small>Click 'Start' to search for available dates</small>
       <DateRangePicker
         startDatePlaceholderText="Start"
         startDate={startDate}
@@ -84,12 +85,24 @@ const EasyDateRange = (props) => {
         minimumNights={3}
         hideKeyboardShortcutsPanel={true}
         anchorDirection="right"
-        autoFocus
-        openDirection="up"
+        autoFocus={focus}
+        autoFocusEndDate
+        initialStartDate={{
+          _isAMomentObject: true,
+          _isUTC: false,
+          _pf: {
+            empty: false,
+            unusedTokens: [],
+            unusedInput: [],
+          },
+        }}
+        withPortal
         block
+        enableOutsideDays
         isDayBlocked={(day) => {
           let allBookedDates = bookedDates() || [];
           let isBooked;
+
           for (let i = 0; i < allBookedDates.length; i++) {
             if (
               day >= allBookedDates[i].startDate &&

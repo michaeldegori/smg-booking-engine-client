@@ -23,6 +23,7 @@ import BookingConfirmed from './components/BookingConfirmed';
 import EasyDateRange from './components/EasyDateRange';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import About from './components/About';
 import ForgotPassword from './components/ForgotPassword';
 import EditProperty from './components/EditProperty';
 import AddProperty from './components/AddProperty';
@@ -255,6 +256,7 @@ const App = (props) => {
           path="/easy-vrbo-cal"
           render={(props) => <EasyVrboCal {...props} />}
         />
+        <Route exact path="/about" render={(props) => <About {...props} />} />
       </Switch>
 
       <div className="container w-100" style={{ height: '51px' }}></div>

@@ -52,7 +52,16 @@ const PropertyDetails = (props) => {
                 {property?.listingTitle}
               </h5>
               <p className="card-text text-dark">{property?.description}</p>
+            </div>
+          </div>
+        </div>
+        <div className="card px-2 mb-3">
+          <div className="row my-3">
+            <div className="col-md-6">
               <EasyDateRange />
+              <button className="btn btn-primary text-white form-control">
+                Next
+              </button>
             </div>
           </div>
         </div>

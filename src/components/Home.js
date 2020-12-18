@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Component } from 'react';
-import Axios, { FileDownload } from 'axios';
 import '../styles/Home.css';
 import walkerLiving from '../images/walker-living.jpeg';
 import easyPorch from '../images/easy-porch.jpeg';
