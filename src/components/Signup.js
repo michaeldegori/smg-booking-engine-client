@@ -77,7 +77,7 @@ const Signup = () => {
                   <input
                     className="form-control py-4"
                     type="date"
-                    name="email"
+                    name="birthdate"
                     placeholder="Birthday"
                     value={userSignup.birthdate}
                     id="birthdate"
