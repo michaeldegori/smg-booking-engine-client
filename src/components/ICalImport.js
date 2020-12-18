@@ -21,8 +21,8 @@ const ICalImport = (propertyId, source) => {
         eachEvent[1].map((item) => item)
       );
       let bookingDates = bookingData.map((items) => {
-        let checkinDetail = items[0];
-        let checkoutDetail = items[1];
+        let checkinDetail = items[1];
+        let checkoutDetail = items[0];
         return {
           checkinDate: new Date(checkinDetail[3]),
           checkoutDate: new Date(checkoutDetail[3]),

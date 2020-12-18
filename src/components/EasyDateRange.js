@@ -57,10 +57,9 @@ const EasyDateRange = (props) => {
   };
 
   const bookedDates = () => {
-    debugger;
     return bookings?.map((booking) => ({
-      startDate: booking.checkinDate,
-      endDate: booking.checkoutDate,
+      startDate: new Date(moment(booking.checkinDate).format('YYYY-MM-DD')),
+      endDate: new Date(moment(booking.checkoutDate).format('YYYY-MM-DD')),
     }));
   };
   // const unique = availableDates.filter(function (date) {

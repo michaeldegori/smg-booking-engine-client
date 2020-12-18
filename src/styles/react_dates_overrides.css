@@ -368,9 +368,9 @@
 .CalendarDay__blocked_calendar,
 .CalendarDay__blocked_calendar:active,
 .CalendarDay__blocked_calendar:hover {
-  background: #cacccd;
-  border: 1px solid #cacccd;
-  color: #82888a;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  color: #dbdbdb;
 }
 .CalendarDay__blocked_out_of_range,
 .CalendarDay__blocked_out_of_range:active,
