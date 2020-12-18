@@ -24,7 +24,9 @@ const About = () => {
         <div
           className="row d-flex justify-content-start align-items-center"
           style={{
-            minHeight: '70vh',
+            height: '60vh',
+            minHeight: '450px',
+            maxHeight: '700px',
           }}
         >
           <div className="col">
