@@ -12,7 +12,10 @@
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "date-fns": "^2.16.1",
+    "email-validator": "^2.0.4",
+    "formik": "^2.2.6",
     "ical.js": "^1.4.0",
+    "max-validator": "^1.1.1",
     "moment": "^2.29.1",
     "mongoose": "^5.11.8",
     "node-sass": "^4.14.1",
@@ -26,7 +29,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-transition-group": "^4.4.1",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.8"
   },
   "scripts": {
     "start": "react-scripts start",

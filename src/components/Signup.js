@@ -3,7 +3,7 @@ import { userContext } from '../contexts/User';
 import api from '../services/api';
 import { useHistory, Link } from 'react-router-dom';
 import '../styles/Login.css';
-import background from '../images/smoky-background.jpg';
+import ValidatedSignupForm from './ValidatedSignupForm';
 
 const Signup = () => {
   const history = useHistory();
@@ -12,8 +12,8 @@ const Signup = () => {
   const [userSignup, setUserSignup] = useState({
     firstName: '',
     lastName: '',
-    birthdate: Date.now(),
-    phone: null,
+    birthdate: '',
+    phone: '',
     email: '',
     password: '',
   });
@@ -49,83 +49,7 @@ const Signup = () => {
             <h6 className="text-danger">
               Finish signing up to book your first getaway!
             </h6>
-            <form onSubmit={signupUser}>
-              <div className="form-group">
-                <div className="form-group">
-                  <input
-                    className="form-control py-4"
-                    name="firstName"
-                    placeholder="First name"
-                    value={userSignup.firstName}
-                    id="first-name"
-                    onChange={handleChange}
-                  />
-                  <input
-                    className="form-control py-4"
-                    name="lastName"
-                    placeholder="Last name"
-                    value={userSignup.lastName}
-                    id="last-name"
-                    onChange={handleChange}
-                  />
-                  <small>
-                    Make sure it matches the name on your government-issued ID.
-                  </small>
-                </div>
-                <div className="form-group">
-                  <input
-                    className="form-control py-4"
-                    type="date"
-                    name="birthdate"
-                    placeholder="Birthday"
-                    value={userSignup.birthdate}
-                    id="birthdate"
-                    onChange={handleChange}
-                  />
-                  <small>
-                    You must be 25 or over to book with us. Other people won't
-                    see your birthday.
-                  </small>
-                </div>
-                <div className="form-group">
-                  <input
-                    className="form-control py-4"
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone"
-                    value={userSignup.phone}
-                    onChange={handleChange}
-                  />
-                  <small>U.S. phone numbers only, please.</small>
-                </div>
-                <div className="form-group">
-                  <input
-                    className="form-control py-4"
-                    name="email"
-                    placeholder="Email"
-                    value={userSignup.email}
-                    onChange={handleChange}
-                  />
-                  <small>
-                    We'll email you trip confirmations and receipts.
-                  </small>
-                </div>
-                <input
-                  className="form-control py-4"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={userSignup.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <button
-                className="btn btn-primary text-white "
-                style={{ width: '100%' }}
-              >
-                Sign up
-              </button>
-            </form>
+            <ValidatedSignupForm />
           </div>
         </div>
       </div>
