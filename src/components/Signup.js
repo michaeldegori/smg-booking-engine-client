@@ -42,11 +42,10 @@ const Signup = () => {
   };
 
   return (
-    <section className="properites">
-      <div className="container-xl ">
+    <section className="signup">
+      <div className="container-fluid ">
         <div className="row d-flex justify-content-center">
-          <div className="col-md-8">
-            <h5 className="card-title py-2">Sign up</h5>
+          <div className="col">
             <h6 className="text-danger">
               Finish signing up to book your first getaway!
             </h6>
@@ -127,7 +126,6 @@ const Signup = () => {
                 Sign up
               </button>
             </form>
-            <hr />
           </div>
         </div>
       </div>

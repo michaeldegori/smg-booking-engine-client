@@ -32,13 +32,17 @@ import contactGlyph from './images/contact-glyph.png';
 import aboutGlyph from './images/about-glyph.png';
 import logo from './images/smg-logo-blue-cabin-only.png';
 import Button from 'react-bootstrap/Button';
-import Collapse from 'react-bootstrap/Collapse';
+import Modal from 'react-bootstrap/Modal';
 
 const App = (props) => {
   const { setUser, user } = useContext(userContext);
 
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
   const history = useHistory();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const logout = () => {
     setOpen(!open);
@@ -121,7 +125,7 @@ const App = (props) => {
                       className="nav-link text-dark p-0"
                       activeClassName="highlight"
                     >
-                      Our Cabins
+                      Our cabins
                     </NavLink>
                   </li>
                   <li className="nav-item my-3">
@@ -131,7 +135,7 @@ const App = (props) => {
                       className="nav-link text-dark p-0"
                       activeClassName="highlight"
                     >
-                      About Us
+                      About us
                     </NavLink>
                   </li>
                   {user ? (
@@ -143,21 +147,32 @@ const App = (props) => {
                           activeClassName="highlight"
                           onClick={logout}
                         >
-                          Logout
+                          Log out
                         </NavLink>
                       </button>
                     </li>
                   ) : (
                     <>
                       <li className="nav-item my-3">
-                        <NavLink
-                          onClick={() => setOpen(!open)}
-                          to="/users/signup"
-                          className="nav-link text-primary p-0"
-                          activeClassName="highlight"
+                        <button
+                          className="btn btn-link"
+                          onClick={() => {
+                            setOpen(!open);
+                            handleShow();
+                          }}
                         >
-                          Sign Up
-                        </NavLink>
+                          Sign up
+                        </button>
+
+                        <Modal show={show} onHide={handleClose} size="lg">
+                          <Modal.Header className="h5" closeButton>
+                            Sign up
+                          </Modal.Header>
+                          <Modal.Body>
+                            <Signup />
+                          </Modal.Body>
+                          <hr />
+                        </Modal>
                       </li>
                       <li className="nav-item my-3">
                         <button className="btn btn-sm btn-primary rounded-pill text-dark py-0 px-3">
@@ -168,7 +183,7 @@ const App = (props) => {
                             className="nav-link text-dark font-weight-bold"
                             activeClassName="highlight"
                           >
-                            Login
+                            Log in
                           </NavLink>
                         </button>
                       </li>
