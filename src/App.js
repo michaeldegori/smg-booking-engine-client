@@ -38,11 +38,15 @@ const App = (props) => {
   const { setUser, user } = useContext(userContext);
 
   const [open, setOpen] = useState(false);
-  const [show, setShow] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const history = useHistory();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleSignupClose = () => setShowSignup(false);
+  const handleSignupShow = () => setShowSignup(true);
+
+  const handleLoginClose = () => setShowLogin(false);
+  const handleLoginShow = () => setShowLogin(true);
 
   const logout = () => {
     setOpen(!open);
@@ -158,13 +162,18 @@ const App = (props) => {
                           className="btn btn-link"
                           onClick={() => {
                             setOpen(!open);
-                            handleShow();
+                            handleSignupShow();
                           }}
                         >
                           Sign up
                         </button>
 
-                        <Modal show={show} onHide={handleClose} size="lg">
+                        <Modal
+                          centered
+                          show={showSignup}
+                          onHide={handleSignupClose}
+                          size="lg"
+                        >
                           <Modal.Header className="h5" closeButton>
                             Sign up
                           </Modal.Header>
@@ -175,17 +184,29 @@ const App = (props) => {
                         </Modal>
                       </li>
                       <li className="nav-item my-3">
-                        <button className="btn btn-sm btn-primary rounded-pill text-dark py-0 px-3">
-                          <NavLink
-                            onClick={() => setOpen(!open)}
-                            to="/users/login"
-                            id="login-link"
-                            className="nav-link text-dark font-weight-bold"
-                            activeClassName="highlight"
-                          >
-                            Log in
-                          </NavLink>
+                        <button
+                          className="btn btn-primary rounded-pill text-white"
+                          onClick={() => {
+                            setOpen(!open);
+                            handleLoginShow();
+                          }}
+                        >
+                          Log in
                         </button>
+
+                        <Modal
+                          centered
+                          show={showLogin}
+                          onHide={handleLoginClose}
+                        >
+                          <Modal.Header className="h5" closeButton>
+                            Log in
+                          </Modal.Header>
+                          <Modal.Body>
+                            <Login />
+                          </Modal.Body>
+                          <hr />
+                        </Modal>
                       </li>
                     </>
                   )}

@@ -38,10 +38,9 @@ const Login = () => {
 
   return (
     <section className="login">
-      <div className="container-xl ">
+      <div className="container-fluid">
         <div className="row d-flex justify-content-center">
-          <div className="col-md-8">
-            <h5 className="card-title py-2">Log in</h5>
+          <div className="col">
             <form onSubmit={loginUser}>
               <div className="form-group">
                 <div className="form-group">
