@@ -4,7 +4,7 @@ import api from '../services/api';
 import { useHistory, Link } from 'react-router-dom';
 import '../styles/Login.css';
 import { Formik } from 'formik';
-import EmailValidator from 'email-validator';
+import { Form, Button } from 'react-bootstrap';
 import * as Yup from 'yup';
 
 const Signup = () => {
@@ -27,7 +27,7 @@ const Signup = () => {
     });
   };
 
-  const signupUser = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     api
@@ -61,7 +61,17 @@ const Signup = () => {
                 password: '',
               }}
               onSubmit={(values, { setSubmitting }) => {
-                console.log('Submitting');
+                api
+                  .post(`${process.env.REACT_APP_BACKEND}users/signup`, values)
+                  .then((response) => {
+                    console.log('User logged in!');
+                    setUser(response.data.user);
+                    localStorage.setItem('token', response.data.token);
+                    history.push(`/properties`);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
               }}
               validationSchema={Yup.object().shape({
                 firstName: Yup.string().required('First name is required'),
@@ -90,10 +100,10 @@ const Signup = () => {
                   handleSubmit,
                 } = props;
                 return (
-                  <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <div className="form-group">
-                        <input
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group className="form-group">
+                      <Form.Group className="form-group">
+                        <Form.Control
                           className="form-control py-4"
                           name="firstName"
                           placeholder="First name"
@@ -105,7 +115,12 @@ const Signup = () => {
                             errors.firstName && touched.firstName && 'error'
                           }
                         />
-                        <input
+                        {errors.firstName && touched.firstName && (
+                          <small className="input-feedback text-danger">
+                            {errors.firstName}
+                          </small>
+                        )}
+                        <Form.Control
                           className="form-control py-4"
                           name="lastName"
                           placeholder="Last name"
@@ -117,23 +132,19 @@ const Signup = () => {
                             errors.lastName && touched.lastName && 'error'
                           }
                         />
-                        <small>
+                        <Form.Text className="text-muted">
                           Make sure it matches the name on your
                           government-issued ID
-                        </small>
-                        {errors.firstName && touched.firstName && (
-                          <small className="input-feedback text-danger">
-                            {errors.firstName}
-                          </small>
-                        )}
+                        </Form.Text>
+
                         {errors.lastName && touched.lastName && (
                           <small className="input-feedback text-danger">
                             {errors.lastName}
                           </small>
                         )}
-                      </div>
-                      <div className="form-group">
-                        <input
+                      </Form.Group>
+                      <Form.Group className="form-group">
+                        <Form.Control
                           className="form-control py-4"
                           type="date"
                           name="birthdate"
@@ -146,18 +157,18 @@ const Signup = () => {
                             errors.birthdate && touched.birthdate && 'error'
                           }
                         />
-                        <small>
+                        <Form.Text className="text-muted">
                           You must be 25 or over to book with us, others won't
                           see your birthday
-                        </small>
+                        </Form.Text>
                         {errors.birthdate && touched.birthdate && (
                           <small className="input-feedback text-danger">
                             {errors.birthdate}
                           </small>
                         )}
-                      </div>
-                      <div className="form-group">
-                        <input
+                      </Form.Group>
+                      <Form.Group className="form-group">
+                        <Form.Control
                           className="form-control py-4"
                           type="tel"
                           name="phone"
@@ -168,15 +179,17 @@ const Signup = () => {
                           onBlur={handleBlur}
                           className={errors.phone && touched.phone && 'error'}
                         />
-                        <small>U.S. phone numbers only, please</small>
+                        <Form.Text className="text-muted">
+                          U.S. phone numbers only, please
+                        </Form.Text>
                         {errors.phone && touched.phone && (
                           <small className="input-feedback text-danger">
                             {errors.phone}
                           </small>
                         )}
-                      </div>
-                      <div className="form-group">
-                        <input
+                      </Form.Group>
+                      <Form.Group className="form-group">
+                        <Form.Control
                           className="form-control py-4"
                           name="email"
                           placeholder="Email"
@@ -186,16 +199,16 @@ const Signup = () => {
                           onBlur={handleBlur}
                           className={errors.email && touched.email && 'error'}
                         />
-                        <small>
+                        <Form.Text className="text-muted">
                           We'll email you trip confirmations and receipts
-                        </small>
+                        </Form.Text>
                         {errors.email && touched.email && (
                           <small className="input-feedback text-danger">
                             {errors.email}
                           </small>
                         )}
-                      </div>
-                      <input
+                      </Form.Group>
+                      <Form.Control
                         className="form-control py-4"
                         type="password"
                         name="password"
@@ -208,25 +221,25 @@ const Signup = () => {
                           errors.password && touched.password && 'error'
                         }
                       />
-                      <small>
+                      <Form.Text className="text-muted">
                         Password must contain: at least 8 characters, 1
                         uppercase, 1 lowercase & 1 symbol
-                      </small>
+                      </Form.Text>
                       {errors.password && touched.password && (
                         <small className="input-feedback text-danger">
                           {errors.password}
                         </small>
                       )}
-                    </div>
-                    <button
+                    </Form.Group>
+                    <Button
                       type="submit"
                       disabled={isSubmitting}
                       className="btn btn-primary text-white "
                       style={{ width: '100%' }}
                     >
                       Sign up
-                    </button>
-                  </form>
+                    </Button>
+                  </Form>
                 );
               }}
             </Formik>
