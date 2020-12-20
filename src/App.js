@@ -48,6 +48,11 @@ const App = (props) => {
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
 
+  const onSignupFormSubmit = (event) => {
+    event.preventDefault();
+    handleSignupClose();
+  };
+
   const logout = () => {
     setOpen(!open);
     setUser(null);
@@ -159,7 +164,7 @@ const App = (props) => {
                     <>
                       <li className="nav-item my-3">
                         <button
-                          className="btn btn-link"
+                          className="btn btn-link p-0"
                           onClick={() => {
                             setOpen(!open);
                             handleSignupShow();
@@ -170,6 +175,7 @@ const App = (props) => {
 
                         <Modal
                           centered
+                          id="signup-modal"
                           show={showSignup}
                           onHide={handleSignupClose}
                           size="lg"

@@ -6,6 +6,7 @@ import '../styles/Login.css';
 import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import * as Yup from 'yup';
+import { handleSignupClose } from '../App';
 
 const Signup = () => {
   const history = useHistory();
@@ -32,9 +33,10 @@ const Signup = () => {
                 api
                   .post(`${process.env.REACT_APP_BACKEND}users/signup`, values)
                   .then((response) => {
-                    console.log('User logged in!');
+                    console.log('User signed up!');
                     setUser(response.data.user);
                     localStorage.setItem('token', response.data.token);
+                    setSubmitting(false);
                     history.push(`/properties`);
                   })
                   .catch((err) => {
