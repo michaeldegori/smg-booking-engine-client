@@ -11,38 +11,6 @@ const Signup = () => {
   const history = useHistory();
   const { setUser } = useContext(userContext);
 
-  const [userSignup, setUserSignup] = useState({
-    firstName: '',
-    lastName: '',
-    birthdate: '',
-    phone: '',
-    email: '',
-    password: '',
-  });
-
-  const handleChange = (event) => {
-    setUserSignup({
-      ...userSignup,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    api
-      .post(`${process.env.REACT_APP_BACKEND}users/signup`, userSignup)
-      .then((response) => {
-        console.log('User logged in!');
-        setUser(response.data.user);
-        localStorage.setItem('token', response.data.token);
-        history.push(`/properties`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <section className="signup">
       <div className="container-fluid ">
