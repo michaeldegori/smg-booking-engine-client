@@ -48,7 +48,7 @@ const App = (props) => {
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
 
-  const onSignupFormSubmit = (event) => {
+  const onLoginFormSubmit = (event) => {
     event.preventDefault();
     handleSignupClose();
   };
