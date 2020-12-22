@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 export const showSignupContext = createContext({
-  showSignup: false,
+  showSignup: true,
   setShowSignup: () => {},
 });
 export default function ({ children }) {

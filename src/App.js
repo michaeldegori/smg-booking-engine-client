@@ -57,6 +57,8 @@ const App = (props) => {
     history.push('/home');
   };
 
+  console.log(showSignup, open);
+
   return (
     <div className="App">
       <header>
