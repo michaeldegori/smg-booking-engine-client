@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useContext } from 'react';
 import { userContext } from './contexts/User';
+import { showSignupContext } from './contexts/ShowSignup';
 import {
   Redirect,
   NavLink,
@@ -36,9 +37,10 @@ import Modal from 'react-bootstrap/Modal';
 
 const App = (props) => {
   const { setUser, user } = useContext(userContext);
+  const { setShowSignup, showSignup } = useContext(showSignupContext);
 
   const [open, setOpen] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
+  // const [showSignup, setShowSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const history = useHistory();
 
@@ -47,11 +49,6 @@ const App = (props) => {
 
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
-
-  const onLoginFormSubmit = (event) => {
-    event.preventDefault();
-    handleSignupClose();
-  };
 
   const logout = () => {
     setOpen(!open);

@@ -6,11 +6,14 @@ import '../styles/Login.css';
 import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import * as Yup from 'yup';
-import { handleSignupClose } from '../App';
+import { showSignupContext } from '../contexts/ShowSignup';
 
 const Signup = () => {
   const history = useHistory();
   const { setUser } = useContext(userContext);
+  const { setShowSignup, showSignup } = useContext(showSignupContext);
+
+  const handleSignupClose = () => setShowSignup(false);
 
   return (
     <section className="signup">
@@ -37,6 +40,7 @@ const Signup = () => {
                     setUser(response.data.user);
                     localStorage.setItem('token', response.data.token);
                     setSubmitting(false);
+                    handleSignupClose();
                     history.push(`/properties`);
                   })
                   .catch((err) => {
