@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useState, useContext } from 'react';
+import { useSignup, useSignupUpdate } from './contexts/ShowSignup';
 import { userContext } from './contexts/User';
-import { showSignupContext } from './contexts/ShowSignup';
+import { SignupProvider } from './contexts/ShowSignup';
 import {
   Redirect,
   NavLink,
@@ -37,15 +38,16 @@ import Modal from 'react-bootstrap/Modal';
 
 const App = (props) => {
   const { setUser, user } = useContext(userContext);
-  const { setShowSignup, showSignup } = useContext(showSignupContext);
 
   const [open, setOpen] = useState(false);
-  // const [showSignup, setShowSignup] = useState(false);
+  const showSignup = useSignup();
+  const handleSignupClose = useSignupUpdate();
+  const handleSignupShow = useSignupUpdate();
   const [showLogin, setShowLogin] = useState(false);
   const history = useHistory();
 
-  const handleSignupClose = () => setShowSignup(false);
-  const handleSignupShow = () => setShowSignup(true);
+  // const handleSignupClose = () => setShowSignup(false);
+  // const handleSignupShow = () => setShowSignup(true);
 
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
@@ -57,7 +59,7 @@ const App = (props) => {
     history.push('/home');
   };
 
-  console.log(showSignup, open);
+  console.log(showSignup);
 
   return (
     <div className="App">
@@ -162,31 +164,33 @@ const App = (props) => {
                   ) : (
                     <>
                       <li className="nav-item my-3">
-                        <button
-                          className="btn btn-link p-0"
-                          onClick={() => {
-                            setOpen(!open);
-                            handleSignupShow();
-                          }}
-                        >
-                          Sign up
-                        </button>
-
-                        <Modal
-                          centered
-                          id="signup-modal"
-                          show={showSignup}
-                          onHide={handleSignupClose}
-                          size="lg"
-                        >
-                          <Modal.Header className="h5" closeButton>
+                        <SignupProvider>
+                          <button
+                            className="btn btn-link p-0"
+                            onClick={() => {
+                              setOpen(!open);
+                              handleSignupShow();
+                            }}
+                          >
                             Sign up
-                          </Modal.Header>
-                          <Modal.Body>
-                            <Signup />
-                          </Modal.Body>
-                          <hr />
-                        </Modal>
+                          </button>
+
+                          <Modal
+                            centered
+                            id="signup-modal"
+                            show={showSignup}
+                            onHide={handleSignupClose}
+                            size="lg"
+                          >
+                            <Modal.Header className="h5" closeButton>
+                              Sign up
+                            </Modal.Header>
+                            <Modal.Body>
+                              <Signup />
+                            </Modal.Body>
+                            <hr />
+                          </Modal>
+                        </SignupProvider>
                       </li>
                       <li className="nav-item my-3">
                         <button

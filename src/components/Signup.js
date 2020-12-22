@@ -1,19 +1,19 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { userContext } from '../contexts/User';
+import { useSignup, useSignupUpdate } from '../contexts/ShowSignup';
 import api from '../services/api';
 import { useHistory, Link } from 'react-router-dom';
 import '../styles/Login.css';
 import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import * as Yup from 'yup';
-import { showSignupContext } from '../contexts/ShowSignup';
+import { SignupContext } from '../App';
 
 const Signup = () => {
   const history = useHistory();
   const { setUser } = useContext(userContext);
-  const { setShowSignup, showSignup } = useContext(showSignupContext);
-
-  const handleSignupClose = () => setShowSignup(false);
+  const showSignup = useSignup();
+  const handleSignupClose = useSignupUpdate();
 
   return (
     <section className="signup">
