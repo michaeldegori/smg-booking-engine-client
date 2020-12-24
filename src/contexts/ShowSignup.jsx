@@ -28,10 +28,4 @@ const SignupProvider = ({ children }) => {
   );
 };
 
-export {
-  SignupContext,
-  UpdateSignupContext,
-  useSignup,
-  useSignupUpdate,
-  SignupProvider,
-};
+export { useSignup, useSignupUpdate, SignupProvider };
