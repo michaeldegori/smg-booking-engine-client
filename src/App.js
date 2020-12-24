@@ -4,7 +4,6 @@ import { useSignup, useSignupUpdate } from './contexts/ShowSignup';
 import { userContext } from './contexts/User';
 import { SignupContext } from './contexts/ShowSignup';
 import { UpdateSignupContext } from './contexts/ShowSignup';
-
 import { SignupProvider } from './contexts/ShowSignup';
 import {
   Redirect,
@@ -42,6 +41,7 @@ import Modal from 'react-bootstrap/Modal';
 const App = (props) => {
   const { setUser, user } = useContext(userContext);
 
+  const [showSignup, setShowSignup] = useContext(SignupContext);
   const [open, setOpen] = useState(false);
   const showSignup = useSignup();
   const handleSignupClose = useSignupUpdate();
