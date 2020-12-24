@@ -2,8 +2,6 @@ import './App.css';
 import React, { useState, useContext } from 'react';
 import { useSignup, useSignupUpdate } from './contexts/ShowSignup';
 import { userContext } from './contexts/User';
-import { SignupContext } from './contexts/ShowSignup';
-import { UpdateSignupContext } from './contexts/ShowSignup';
 import { SignupProvider } from './contexts/ShowSignup';
 import {
   Redirect,
@@ -41,11 +39,10 @@ import Modal from 'react-bootstrap/Modal';
 const App = (props) => {
   const { setUser, user } = useContext(userContext);
 
-  const [showSignup, setShowSignup] = useContext(SignupContext);
   const [open, setOpen] = useState(false);
-  // const showSignup = useSignup();
-  // const handleSignupClose = useSignupUpdate();
-  // const handleSignupShow = useSignupUpdate();
+  const showSignup = useSignup();
+  const handleSignupClose = useSignupUpdate();
+  const handleSignupShow = useSignupUpdate();
   const [showLogin, setShowLogin] = useState(false);
   const history = useHistory();
 
@@ -172,7 +169,7 @@ const App = (props) => {
                             className="btn btn-link p-0"
                             onClick={() => {
                               setOpen(!open);
-                              setShowSignup(true);
+                              handleSignupShow();
                             }}
                           >
                             Sign up
@@ -182,7 +179,7 @@ const App = (props) => {
                             centered
                             id="signup-modal"
                             show={showSignup}
-                            onHide={setShowSignup(false)}
+                            onHide={handleSignupClose}
                             size="lg"
                           >
                             <Modal.Header className="h5" closeButton>
