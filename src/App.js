@@ -171,25 +171,23 @@ const App = (props) => {
                           >
                             Sign up
                           </button>
-                        </SignupProvider>
 
-                        <Modal
-                          centered
-                          id="signup-modal"
-                          show={showSignup}
-                          onHide={handleSignupClose}
-                          size="lg"
-                        >
-                          <Modal.Header className="h5" closeButton>
-                            Sign up
-                          </Modal.Header>
-                          <Modal.Body>
-                            <SignupProvider>
+                          <Modal
+                            centered
+                            id="signup-modal"
+                            show={showSignup}
+                            onHide={handleSignupClose}
+                            size="lg"
+                          >
+                            <Modal.Header className="h5" closeButton>
+                              Sign up
+                            </Modal.Header>
+                            <Modal.Body>
                               <Signup />
-                            </SignupProvider>
-                          </Modal.Body>
-                          <hr />
-                        </Modal>
+                            </Modal.Body>
+                            <hr />
+                          </Modal>
+                        </SignupProvider>
                       </li>
                       <li className="nav-item my-3">
                         <button
