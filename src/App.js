@@ -44,8 +44,8 @@ const App = (props) => {
   const [showSignup, setShowSignup] = useContext(SignupContext);
   const [open, setOpen] = useState(false);
   // const showSignup = useSignup();
-  const handleSignupClose = useSignupUpdate();
-  const handleSignupShow = useSignupUpdate();
+  // const handleSignupClose = useSignupUpdate();
+  // const handleSignupShow = useSignupUpdate();
   const [showLogin, setShowLogin] = useState(false);
   const history = useHistory();
 
