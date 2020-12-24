@@ -43,7 +43,7 @@ const App = (props) => {
 
   const [showSignup, setShowSignup] = useContext(SignupContext);
   const [open, setOpen] = useState(false);
-  const showSignup = useSignup();
+  // const showSignup = useSignup();
   const handleSignupClose = useSignupUpdate();
   const handleSignupShow = useSignupUpdate();
   const [showLogin, setShowLogin] = useState(false);
@@ -172,7 +172,7 @@ const App = (props) => {
                             className="btn btn-link p-0"
                             onClick={() => {
                               setOpen(!open);
-                              handleSignupShow();
+                              setShowSignup(true);
                             }}
                           >
                             Sign up
@@ -182,7 +182,7 @@ const App = (props) => {
                             centered
                             id="signup-modal"
                             show={showSignup}
-                            onHide={handleSignupClose}
+                            onHide={setShowSignup(false)}
                             size="lg"
                           >
                             <Modal.Header className="h5" closeButton>
