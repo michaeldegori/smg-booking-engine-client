@@ -165,12 +165,12 @@ const App = (props) => {
                     <>
                       <li className="nav-item my-3">
                         <SignupProvider>
-                          <Button
+                          <button
                             className="btn btn-link p-0"
                             onClick={handleSignupShow}
                           >
                             Sign up
-                          </Button>
+                          </button>
 
                           <Modal
                             centered
