@@ -61,6 +61,8 @@ const App = (props) => {
 
   console.log(showSignup);
 
+  export const SignupContext = React.createContext();
+
   return (
     <div className="App">
       <header>
