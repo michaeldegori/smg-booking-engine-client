@@ -61,8 +61,6 @@ const App = (props) => {
 
   console.log(showSignup);
 
-  export const SignupContext = React.createContext();
-
   return (
     <div className="App">
       <header>
@@ -173,23 +171,25 @@ const App = (props) => {
                           >
                             Sign up
                           </button>
-
-                          <Modal
-                            centered
-                            id="signup-modal"
-                            show={showSignup}
-                            onHide={handleSignupClose}
-                            size="lg"
-                          >
-                            <Modal.Header className="h5" closeButton>
-                              Sign up
-                            </Modal.Header>
-                            <Modal.Body>
-                              <Signup />
-                            </Modal.Body>
-                            <hr />
-                          </Modal>
                         </SignupProvider>
+
+                        <Modal
+                          centered
+                          id="signup-modal"
+                          show={showSignup}
+                          onHide={handleSignupClose}
+                          size="lg"
+                        >
+                          <Modal.Header className="h5" closeButton>
+                            Sign up
+                          </Modal.Header>
+                          <Modal.Body>
+                            <SignupProvider>
+                              <Signup />
+                            </SignupProvider>
+                          </Modal.Body>
+                          <hr />
+                        </Modal>
                       </li>
                       <li className="nav-item my-3">
                         <button
