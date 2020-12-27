@@ -3,15 +3,15 @@ import React, { useContext, useState } from 'react';
 const SignupContext = React.createContext();
 const UpdateSignupContext = React.createContext();
 
-const useSignup = () => {
+export const useSignup = () => {
   return useContext(SignupContext);
 };
 
-const useSignupUpdate = () => {
+export const useSignupUpdate = () => {
   return useContext(UpdateSignupContext);
 };
 
-const SignupProvider = ({ children }) => {
+export default function SignupProvider({ children }) {
   const [showSignup, setShowSignup] = useState(false);
 
   const handleSignupClose = () => setShowSignup(false);
@@ -26,6 +26,4 @@ const SignupProvider = ({ children }) => {
       </UpdateSignupContext.Provider>
     </SignupContext.Provider>
   );
-};
-
-export { useSignup, useSignupUpdate, SignupProvider };
+}

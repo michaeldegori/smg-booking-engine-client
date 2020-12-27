@@ -9,12 +9,15 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import './styles/react_dates_overrides.css';
 import UserProvider from './contexts/User';
+import SignupProvider from './contexts/ShowSignup';
 
 ReactDOM.render(
   <UserProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <SignupProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SignupProvider>
   </UserProvider>,
   document.getElementById('root')
 );

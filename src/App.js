@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useContext } from 'react';
 import { useSignup, useSignupUpdate } from './contexts/ShowSignup';
 import { userContext } from './contexts/User';
-import { SignupProvider } from './contexts/ShowSignup';
+import SignupProvider from './contexts/ShowSignup';
 import {
   Redirect,
   NavLink,
