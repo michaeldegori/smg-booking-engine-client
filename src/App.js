@@ -177,7 +177,7 @@ const App = (props) => {
                           centered
                           id="signup-modal"
                           show={showSignup}
-                          // onHide={handleSignupClose}
+                          onHide={handleSignupClose}
                           size="lg"
                         >
                           <Modal.Header className="h5" closeButton>
