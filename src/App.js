@@ -64,7 +64,7 @@ const App = (props) => {
     <div className="App">
       <header>
         <nav className="navbar navbar-expand-md navbar-fixed-top navbar-light bg-white p-0">
-          <div className="container-xl px-0 d-flex justify-content-center">
+          <div className="container-fluid d-flex justify-content-center">
             <div className="navbar-header w-100 d-flex justify-content-between">
               <div className="col p-0">
                 <NavLink
