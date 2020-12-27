@@ -1,15 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
-const SignupContext = React.createContext();
+export const SignupContext = createContext({
+  showSignup: false,
+  setShowSignup: () => {},
+});
+
 const UpdateSignupContext = React.createContext();
 
-export const useSignup = () => {
-  return useContext(SignupContext);
-};
+// export const useSignup = () => {
+//   return useContext(SignupContext);
+// };
 
-export const useSignupUpdate = () => {
-  return useContext(UpdateSignupContext);
-};
+// export const useSignupUpdate = () => {
+//   return useContext(UpdateSignupContext);
+// };
 
 export default function SignupProvider({ children }) {
   const [showSignup, setShowSignup] = useState(false);

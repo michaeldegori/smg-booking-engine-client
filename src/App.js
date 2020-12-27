@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useContext } from 'react';
-import { useSignup, useSignupUpdate } from './contexts/ShowSignup';
+import { SignupContext } from './contexts/ShowSignup';
 import { userContext } from './contexts/User';
 import {
   Redirect,
@@ -39,14 +39,14 @@ const App = (props) => {
   const { setUser, user } = useContext(userContext);
 
   const [open, setOpen] = useState(false);
-  const { setShowSignup, showSignup } = useContext(useSignup);
-  const handleSignupClose = useSignupUpdate();
-  const handleSignupShow = useSignupUpdate();
+  const { setShowSignup, showSignup } = useContext(SignupContext);
+  // const handleSignupClose = useSignupUpdate();
+  // const handleSignupShow = useSignupUpdate();
   const [showLogin, setShowLogin] = useState(false);
   const history = useHistory();
 
-  // const handleSignupClose = () => setShowSignup(false);
-  // const handleSignupShow = () => setShowSignup(true);
+  const handleSignupClose = () => setShowSignup(false);
+  const handleSignupShow = () => setShowSignup(true);
 
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
