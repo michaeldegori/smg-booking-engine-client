@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState, useContext } from 'react';
 import { useSignup, useSignupUpdate } from './contexts/ShowSignup';
 import { userContext } from './contexts/User';
-import SignupProvider from './contexts/ShowSignup';
 import {
   Redirect,
   NavLink,
@@ -40,7 +39,7 @@ const App = (props) => {
   const { setUser, user } = useContext(userContext);
 
   const [open, setOpen] = useState(false);
-  const showSignup = useSignup();
+  const { setShowSignup, showSignup } = useContext(useSignup);
   const handleSignupClose = useSignupUpdate();
   const handleSignupShow = useSignupUpdate();
   const [showLogin, setShowLogin] = useState(false);
@@ -164,30 +163,31 @@ const App = (props) => {
                   ) : (
                     <>
                       <li className="nav-item my-3">
-                        <SignupProvider>
-                          <button
-                            className="btn btn-link p-0"
-                            onClick={handleSignupShow}
-                          >
-                            Sign up
-                          </button>
+                        <button
+                          className="btn btn-link p-0"
+                          onClick={() => {
+                            setOpen(!open);
+                            handleSignupShow();
+                          }}
+                        >
+                          Sign up
+                        </button>
 
-                          <Modal
-                            centered
-                            id="signup-modal"
-                            show={showSignup}
-                            onHide={handleSignupClose}
-                            size="lg"
-                          >
-                            <Modal.Header className="h5" closeButton>
-                              Sign up
-                            </Modal.Header>
-                            <Modal.Body>
-                              <Signup />
-                            </Modal.Body>
-                            <hr />
-                          </Modal>
-                        </SignupProvider>
+                        <Modal
+                          centered
+                          id="signup-modal"
+                          show={showSignup}
+                          // onHide={handleSignupClose}
+                          size="lg"
+                        >
+                          <Modal.Header className="h5" closeButton>
+                            Sign up
+                          </Modal.Header>
+                          <Modal.Body>
+                            <Signup />
+                          </Modal.Body>
+                          <hr />
+                        </Modal>
                       </li>
                       <li className="nav-item my-3">
                         <button

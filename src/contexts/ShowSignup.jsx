@@ -18,7 +18,7 @@ export default function SignupProvider({ children }) {
   const handleSignupShow = () => setShowSignup(true);
 
   return (
-    <SignupContext.Provider value={showSignup}>
+    <SignupContext.Provider value={{ showSignup, setShowSignup }}>
       <UpdateSignupContext.Provider
         value={{ handleSignupShow, handleSignupClose }}
       >
@@ -27,3 +27,17 @@ export default function SignupProvider({ children }) {
     </SignupContext.Provider>
   );
 }
+
+// import { createContext, useState } from 'react';
+// export const SignupContext = createContext({
+//   user: null,
+//   setUser: () => {},
+// });
+// export default function ({ children }) {
+//   const [showSignup, setShowSignup] = useState(false);
+//   return (
+//     <userContext.Provider value={{ user, setUser }}>
+//       {children}
+//     </userContext.Provider>
+//   );
+// }
