@@ -50,6 +50,7 @@ const Home = (props) => {
         className="container-xl rounded"
         id="top"
         style={{
+          paddingTop: '70px',
           backgroundImage: `url(${background})`,
           top: 0,
           bottom: 0,

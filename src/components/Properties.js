@@ -41,7 +41,7 @@ const Properties = (props) => {
   const listProperties = () => {
     return properties?.map((property) => {
       return (
-        <div className="card mb-3">
+        <div className="card mb-3 border-0">
           <img
             src={property?.photos}
             className="card-img-top"
@@ -90,9 +90,9 @@ const Properties = (props) => {
         <h3 className="text-dark">Stays in the Great Smokies</h3>
         <div className="row mt-4">
           <div
-            className="col-md-5"
+            className="col-md-7"
             style={{
-              minWidth: '300px',
+              minWidth: '500px',
             }}
           >
             {listProperties()}{' '}
@@ -105,7 +105,7 @@ const Properties = (props) => {
             )}
           </div>
           <div
-            className="col-md-7 position-fixed"
+            className="col-md-5 position-fixed"
             style={{
               top: '70px',
               right: 0,
