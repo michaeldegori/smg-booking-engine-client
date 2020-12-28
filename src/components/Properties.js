@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/Properties.css';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+require('dotenv').config();
 
 const containerStyle = {
   width: '100%',
@@ -36,50 +37,48 @@ const Properties = (props) => {
       .catch((err) => console.log(err));
   }, []);
 
+  console.log(process.env.REACT_APP_MAPS_KEY);
   const listProperties = () => {
     return properties?.map((property) => {
       return (
-        <div className="col">
-          <div className="card mb-3">
-            <img
-              src={property?.photos}
-              className="card-img-top"
-              style={{
-                height: '30vh',
-                objectFit: 'cover',
-              }}
-              alt="..."
-            />
-            <div className="card-body">
-              <div className="row">
-                <div className="col">
-                  <p className="card-text text-dark">
-                    Guests: {property?.maxGuests}
-                  </p>
-                </div>
-                <div className="col">
-                  <p className="card-text text-dark">
-                    Beds: {property?.bedrooms}
-                  </p>
-                </div>
-                <div className="col">
-                  <p className="card-text text-dark">
-                    Baths: {property?.bathrooms}
-                  </p>
-                </div>
+        <div className="card mb-3">
+          <img
+            src={property?.photos}
+            className="card-img-top"
+            style={{
+              height: '30vh',
+              objectFit: 'cover',
+            }}
+            alt="..."
+          />
+          <div className="card-body">
+            <div className="row d-flex justify-between">
+              <div className="col">
+                <p className="card-text text-dark">
+                  {property?.maxGuests} guests
+                </p>
               </div>
-              <h5 className="card-title text-danger mt-2">
-                {property?.listingTitle}
-              </h5>
-              <p className="card-text text-dark">{property?.description}</p>
+              <div className="col">
+                <p className="card-text text-dark">
+                  {property?.bedrooms} bedrooms
+                </p>
+              </div>
+              <div className="col">
+                <p className="card-text text-dark">
+                  {property?.bathrooms} baths
+                </p>
+              </div>
             </div>
-
-            <Link to={`/properties/${property?._id}`}>
-              <button className="btn btn-primary text-white mb-4 mx-3">
-                View cabin
-              </button>
-            </Link>
+            <h5 className="card-title text-danger mt-2">
+              {property?.listingTitle}
+            </h5>
+            <p className="card-text text-dark">{property?.description}</p>
           </div>
+          <Link to={`/properties/${property?._id}`}>
+            <button className="btn btn-primary text-white mb-4 mx-3">
+              View cabin
+            </button>
+          </Link>
         </div>
       );
     });
@@ -88,9 +87,14 @@ const Properties = (props) => {
   return (
     <section className="properites">
       <div className="container-fluid py-3">
-        <h3 className="text-dark">Our properties</h3>
+        <h3 className="text-dark">Stays in the Great Smokies</h3>
         <div className="row mt-4">
-          <div className="col">
+          <div
+            className="col-md-5"
+            style={{
+              minWidth: '300px',
+            }}
+          >
             {listProperties()}{' '}
             {user && (
               <Link to="/properties/add">
@@ -100,8 +104,14 @@ const Properties = (props) => {
               </Link>
             )}
           </div>
-          <div className="col-md-6">
-            <LoadScript googleMapsApiKey="AIzaSyCBkRDhQx2JlSbfRYDK5k5T8h6nrmSATdU">
+          <div
+            className="col-md-7 position-fixed"
+            style={{
+              top: '70px',
+              right: 0,
+            }}
+          >
+            <LoadScript googleMapsApiKey={process.env.MAPS_KEY}>
               <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}

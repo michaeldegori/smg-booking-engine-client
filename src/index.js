@@ -10,6 +10,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import './styles/react_dates_overrides.css';
 import UserProvider from './contexts/User';
 import SignupProvider from './contexts/ShowSignup';
+require('dotenv').config();
 
 ReactDOM.render(
   <UserProvider>
