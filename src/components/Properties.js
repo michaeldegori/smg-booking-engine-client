@@ -11,8 +11,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523,
+  lat: 35.7897,
+  lng: -83.5585,
 };
 
 const Properties = (props) => {
@@ -100,12 +100,12 @@ const Properties = (props) => {
               </Link>
             )}
           </div>
-          <div className="col-md-5 position-relative">
-            <LoadScript googleMapsApiKey="YOUR_API_KEY">
+          <div className="col-md-6">
+            <LoadScript googleMapsApiKey="AIzaSyCBkRDhQx2JlSbfRYDK5k5T8h6nrmSATdU">
               <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={10}
+                zoom={12}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
               >
