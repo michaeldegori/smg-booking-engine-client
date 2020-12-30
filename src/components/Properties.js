@@ -9,7 +9,7 @@ require('dotenv').config();
 
 const containerStyle = {
   width: '100%',
-  height: '100vh',
+  height: 'calc(100vh-70px)',
 };
 
 const center = {
@@ -48,7 +48,7 @@ const Properties = (props) => {
             <Carousel className="col-md-4" interval="10000000000">
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block w-100 rounded"
                   src={property?.photos}
                   alt="First slide"
                   style={{ objectFit: 'cover' }}
@@ -56,14 +56,14 @@ const Properties = (props) => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block w-100 rounded"
                   src={property?.photos}
                   alt="Third slide"
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block w-100 rounded"
                   src={property?.photos}
                   alt="Third slide"
                 />
