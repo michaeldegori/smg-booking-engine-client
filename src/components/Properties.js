@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/Properties.css';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { Carousel } from 'react-bootstrap';
 require('dotenv').config();
 
 const containerStyle = {
@@ -44,72 +45,30 @@ const Properties = (props) => {
         <div>
           <hr className="my-4" />
           <div className="row mb-3 ml-0 border-0">
-            <div
-              id="carouselExampleIndicators"
-              class="carousel slide"
-              data-ride="carousel"
-            >
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="1"
-                ></li>
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="2"
-                ></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="..." alt="First slide" />
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="..." alt="Second slide" />
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="..." alt="Third slide" />
-                </div>
-              </div>
-              <a
-                class="carousel-control-prev"
-                href="#carouselExampleIndicators"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#carouselExampleIndicators"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-            <div
-              className="col-4 rounded"
-              style={{
-                backgroundImage: `url("${property?.photos}")`,
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                height: '200px',
-              }}
-            ></div>
+            <Carousel className="col-md-4" interval="10000000000">
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={property?.photos}
+                  alt="First slide"
+                  style={{ objectFit: 'cover' }}
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={property?.photos}
+                  alt="Third slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={property?.photos}
+                  alt="Third slide"
+                />
+              </Carousel.Item>
+            </Carousel>
             <div className="col-8 pr-0">
               <div className="text-muted">Listing Title</div>
               <h5>{property?.listingTitle}</h5>
