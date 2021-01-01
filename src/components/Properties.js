@@ -45,7 +45,7 @@ const Properties = (props) => {
         <div>
           <hr className="my-4" />
           <div className="row mb-3 ml-0 border-0">
-            <Carousel className="col-md-4" interval="10000000000">
+            <Carousel className="col-md-4">
               <Carousel.Item>
                 <img
                   className="d-block w-100 rounded"
