@@ -46,7 +46,7 @@ const Properties = (props) => {
           <hr className="my-4" />
           <div className="row mb-3 ml-0 border-0">
             <Carousel className="col-md-4" interval="100000000000">
-              <Carousel.Item style={{ height: '300px' }}>
+              <Carousel.Item>
                 <img
                   className="d-block w-100 rounded"
                   src={property?.photos}
@@ -54,14 +54,14 @@ const Properties = (props) => {
                   style={{ objectFit: 'cover' }}
                 />
               </Carousel.Item>
-              <Carousel.Item style={{ height: '300px' }}>
+              <Carousel.Item>
                 <img
                   className="d-block w-100 rounded"
                   src={property?.photos}
                   alt="Third slide"
                 />
               </Carousel.Item>
-              <Carousel.Item style={{ height: '300px' }}>
+              <Carousel.Item>
                 <img
                   className="d-block w-100 rounded"
                   src={property?.photos}
