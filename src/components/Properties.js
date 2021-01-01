@@ -51,7 +51,7 @@ const Properties = (props) => {
                   className="d-block w-100 rounded"
                   src={property?.photos}
                   alt="First slide"
-                  style={{ objectFit: 'cover' }}
+                  style={{ height: '300px' }}
                 />
               </Carousel.Item>
               <Carousel.Item style={{ height: '300px' }}>
