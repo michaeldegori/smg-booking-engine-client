@@ -7,14 +7,6 @@ export const SignupContext = createContext({
 
 const UpdateSignupContext = React.createContext();
 
-// export const useSignup = () => {
-//   return useContext(SignupContext);
-// };
-
-// export const useSignupUpdate = () => {
-//   return useContext(UpdateSignupContext);
-// };
-
 export default function SignupProvider({ children }) {
   const [showSignup, setShowSignup] = useState(false);
 
@@ -31,17 +23,3 @@ export default function SignupProvider({ children }) {
     </SignupContext.Provider>
   );
 }
-
-// import { createContext, useState } from 'react';
-// export const SignupContext = createContext({
-//   user: null,
-//   setUser: () => {},
-// });
-// export default function ({ children }) {
-//   const [showSignup, setShowSignup] = useState(false);
-//   return (
-//     <userContext.Provider value={{ user, setUser }}>
-//       {children}
-//     </userContext.Provider>
-//   );
-// }
