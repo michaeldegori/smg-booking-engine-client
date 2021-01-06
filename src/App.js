@@ -300,6 +300,7 @@ const App = (props) => {
       </Switch>
 
       <div className="container w-100" style={{ height: '51px' }}></div>
+
       <footer
         className="d-md-none bg-primary fixed-bottom m-0"
         style={{ width: '100vw' }}
