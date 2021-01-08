@@ -15,7 +15,6 @@ import Home from './components/Home';
 import Properties from './components/Properties';
 import PropertyDetails from './components/PropertyDetails';
 import Booking from './components/Booking';
-import ConfirmBookingDetails from './components/ConfirmBookingDetails';
 import WalkerAirbnbCal from './components/WalkerAirbnbCal';
 import WalkerVrboCal from './components/WalkerVrboCal';
 import EasyAirbnbCal from './components/EasyAirbnbCal';
@@ -251,11 +250,11 @@ const App = (props) => {
           path="/properties/:id/reserve"
           render={(props) => <Booking {...props} />}
         />
-        <PrivateRoute
+        {/* <PrivateRoute
           exact
           path="/properties/:id/confirm-details"
           render={(props) => <ConfirmBookingDetails {...props} />}
-        />
+        /> */}
         <Route
           exact
           path="/users/login"
