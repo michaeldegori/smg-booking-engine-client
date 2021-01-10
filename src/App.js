@@ -251,11 +251,11 @@ const App = (props) => {
           path="/properties/:id/reserve"
           render={(props) => <Booking {...props} />}
         />
-        {/* <PrivateRoute
+        <PrivateRoute
           exact
           path="/properties/:id/confirm-details"
-          render={(props) => <ConfirmBookingDetails {...props} />}
-        /> */}
+          render={(props) => <ConfirmBooking {...props} />}
+        />
         <Route
           exact
           path="/users/login"
