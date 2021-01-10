@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import '../styles/Properties.css';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { Carousel } from 'react-bootstrap';
-require('dotenv').config();
 
 const containerStyle = {
   width: '100%',
