@@ -19,6 +19,7 @@ import WalkerAirbnbCal from './components/WalkerAirbnbCal';
 import WalkerVrboCal from './components/WalkerVrboCal';
 import EasyAirbnbCal from './components/EasyAirbnbCal';
 import EasyVrboCal from './components/EasyVrboCal';
+import ConfirmBooking from './components/ConfirmBooking';
 import BookingConfirmed from './components/BookingConfirmed';
 import EasyDateRange from './components/EasyDateRange';
 import Login from './components/Login';
